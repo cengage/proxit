@@ -3,11 +3,11 @@ Proxit
 
 Simple proxy server built on connect.
 
-## Installation
+## Installation (linux/mac)
 
-1. npm install -g proxit
+1. sudo npm install -g proxit
 
-## First Project
+## First Project (linux/mac)
 
 1. mkdir &lt;yourdirectory&gt;
 2. cd &lt;yourdirectory&gt;
