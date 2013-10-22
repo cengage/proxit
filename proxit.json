@@ -1,0 +1,7 @@
+{
+    "port": 9000,
+    "verbose": true,
+    "routes": {
+        "/": "http://nodejs.org/"
+    }
+}
