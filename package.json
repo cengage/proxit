@@ -1,7 +1,7 @@
 {
     "name": "proxit",
     "description": "Simple proxy server built on connect.",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "bin": "main.js",
     "main": "lib/proxit",
     "engines": {
@@ -19,7 +19,7 @@
         "url": "https://github.com/cengage/proxit"
     },
     "licenses": [{
-      "type": "Apache",
-      "url": "https://raw.github.com/cengage/proxit/master/LICENSE"
+        "type": "Apache",
+        "url": "https://raw.github.com/cengage/proxit/master/LICENSE"
     }]
 }
