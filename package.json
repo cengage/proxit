@@ -18,8 +18,8 @@
         "type": "git",
         "url": "https://github.com/cengage/proxit"
     },
-    "license": {
+    "licenses": [{
       "type": "Apache",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-    }
+      "url": "https://raw.github.com/cengage/proxit/master/LICENSE"
+    }]
 }
