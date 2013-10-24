@@ -13,5 +13,13 @@
         "cli": "latest"
     },
     "devDependencies": {
-    }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cengage/proxit"
+    },
+    "licenses": [{
+      "type": "Apache",
+      "url": "https://raw.github.com/cengage/proxit/master/LICENSE"
+    }]
 }
