@@ -1,7 +1,7 @@
 {
     "name": "proxit",
     "description": "Simple proxy server built on connect.",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "bin": "main.js",
     "main": "lib/proxit",
     "engines": {
