@@ -1,25 +1,26 @@
 {
-    "name": "proxit",
-    "description": "Simple proxy server built on connect.",
-    "version": "0.0.9",
-    "bin": "main.js",
-    "main": "lib/proxit",
-    "engines": {
-        "node": ">=0.8"
-    },
-    "dependencies": {
-        "colors": "latest",
-        "connect": "latest",
-        "cli": "latest"
-    },
-    "devDependencies": {
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/cengage/proxit"
-    },
-    "licenses": [{
-        "type": "Apache",
-        "url": "https://raw.github.com/cengage/proxit/master/LICENSE"
-    }]
+  "name": "proxit",
+  "description": "Simple proxy server built on express / connect.",
+  "version": "0.1.0",
+  "bin": "main.js",
+  "main": "lib/proxit",
+  "engines": {
+    "node": ">=0.8"
+  },
+  "dependencies": {
+    "colors": "~0.6.2",
+    "cli": "~0.4.5",
+    "express": "~3.4.8"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cengage/proxit"
+  },
+  "licenses": [
+    {
+      "type": "Apache",
+      "url": "https://raw.github.com/cengage/proxit/master/LICENSE"
+    }
+  ]
 }
