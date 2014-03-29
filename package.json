@@ -1,16 +1,16 @@
 {
   "name": "proxit",
   "description": "Simple proxy server built on express / connect.",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "bin": "main.js",
   "main": "lib/proxit",
   "engines": {
     "node": ">=0.8"
   },
   "dependencies": {
-    "colors": "~0.6.2",
     "cli": "~0.4.5",
-    "express": "~3.4.8"
+    "express": "~3.4.8",
+    "chalk": "~0.4.0"
   },
   "devDependencies": {},
   "repository": {
