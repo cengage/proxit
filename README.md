@@ -1,4 +1,4 @@
-Proxit
+Proxit [![Build Status](https://travis-ci.org/cengage/proxit.svg?branch=master)](https://travis-ci.org/cengage/proxit)
 ======
 
 Simple proxy server built on connect.
