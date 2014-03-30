@@ -10,7 +10,9 @@
   "dependencies": {
     "express": "~3.4.8",
     "chalk": "~0.4.0",
-    "rc": "~0.3.4"
+    "rc": "~0.3.4",
+    "uuid": "~1.4.1",
+    "lodash": "~2.4.1"
   },
   "devDependencies": {
     "grunt": "~0.4.4",
