@@ -9,7 +9,7 @@ Simple proxy server built on connect.
 
 ## Configuration
 
-1. Create a ".proxitrc" file in one of the following locations:
+1. Create a configuration file in one of the following locations:
   * a local `.proxitrc` or the first found looking in `./ ../ ../../ ../../../` etc.
   * `$HOME/.proxitrc`
   * `$HOME/.proxit/config`
@@ -18,7 +18,7 @@ Simple proxy server built on connect.
   * `/etc/proxitrc`
   * `/etc/proxit/config`
 
-2. Save configuration to ".proxitrc", e.g.:
+2. Update the configuration file, e.g.:
 
 ```json
 {
