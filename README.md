@@ -3,11 +3,11 @@ Proxit [![Build Status](https://travis-ci.org/cengage/proxit.svg?branch=master)]
 
 Simple proxy server built on connect.
 
-## Installation (linux/mac)
+## Installation
 
 1. sudo npm install -g proxit
 
-## First Project (linux/mac)
+## Configuration
 
 1. Create a ".proxitrc" file in one of the following locations:
   * a local `.proxitrc` or the first found looking in `./ ../ ../../ ../../../` etc.
