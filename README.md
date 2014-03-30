@@ -5,7 +5,7 @@ Simple proxy server built on connect.
 
 ## Installation
 
-1. sudo npm install -g proxit
+1. npm install -g proxit (may need to add "sudo" for Mac / Linux)
 
 ## Configuration
 
