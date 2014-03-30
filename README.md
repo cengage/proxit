@@ -9,10 +9,29 @@ Simple proxy server built on connect.
 
 ## First Project (linux/mac)
 
-1. mkdir &lt;yourdirectory&gt;
-2. cd &lt;yourdirectory&gt;
-3. proxit --init
-4. proxit
+1. Create a ".proxitrc" file in one of the following locations:
+  * a local `.proxitrc` or the first found looking in `./ ../ ../../ ../../../` etc.
+  * `$HOME/.proxitrc`
+  * `$HOME/.proxit/config`
+  * `$HOME/.config/proxit`
+  * `$HOME/.config/proxit/config`
+  * `/etc/proxitrc`
+  * `/etc/proxit/config`
+
+2. Save configuration to ".proxitrc", e.g.:
+
+```json
+{
+    "port": 9000,
+    "verbose": true,
+    "routes": {
+        "/": "http://nodejs.org/"
+    }
+}
+```
+
+3. Start proxit by running "proxit" on the command line.
+
 
 ## Issues / Bugs
 
