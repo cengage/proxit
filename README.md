@@ -25,7 +25,8 @@ Simple proxy server built on connect.
     "port": 9000,
     "verbose": true,
     "routes": {
-        "/": "http://nodejs.org/"
+        "/": "http://nodejs.org/",
+        "/someroute": "/somelocaldirectory/"
     }
 }
 ```
