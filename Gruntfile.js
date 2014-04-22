@@ -1,4 +1,4 @@
-module.exports = function (grunt) {
+module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         jshint: {
@@ -15,11 +15,15 @@ module.exports = function (grunt) {
                 reporter: 'spec'
             },
             src: ['test/**/*-spec.js']
+        },
+        jsbeautifier: {
+            src: '<%= jshint.files %>'
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-mocha-test');
+    grunt.loadNpmTasks('grunt-jsbeautifier');
 
-    grunt.registerTask('default', ['jshint', 'mochaTest']);
+    grunt.registerTask('default', ['jshint', 'mochaTest', 'jsbeautifier']);
 };

@@ -9,7 +9,7 @@ describe('converter', function() {
     });
 
     describe('with "to" as URL object', function() {
-       tests(URL.parse('http://www.nodejs.org'));
+        tests(URL.parse('http://www.nodejs.org'));
     });
 
     it('should convert a single file with query params', function() {
