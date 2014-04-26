@@ -7,7 +7,7 @@ Simple proxy server built on connect.
 
 1. npm install -g proxit (may need to add "sudo" for Mac / Linux)
 
-## Configuration
+## Configuration - Stand Alone
 
 1. Create a configuration file in one of the following locations:
   * a local `.proxitrc` or the first found looking in `./ ../ ../../ ../../../` etc.
@@ -31,8 +31,48 @@ Simple proxy server built on connect.
 }
 ```
 
-3. Start proxit by running "proxit" on the command line.
+3. Start proxit by running `proxit` on the command line.
 
+## Configuration - Grunt
+
+In your project's `gruntfile.js`, add a section named `proxit`.
+
+```js
+grunt.initConfig({
+    proxit: {
+        dev: {
+            options: {
+                verbose: true,
+                routes: {
+                    '/': 'http://nodejs.org/'
+                }
+            }
+        }
+    }
+});
+
+grunt.loadNpmTasks('proxit');
+
+```
+
+You can now start your dev configuration using `grunt proxit:dev`.
+
+## Configuration - Middleware
+
+```js
+
+var proxit = require('proxit');
+
+var config = {
+   verbose: true,
+   routes: {
+       '/': 'http://nodejs.org/'
+   }
+};
+
+express.use(proxit(config));
+
+```
 
 ## Issues / Bugs
 
