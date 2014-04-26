@@ -20,15 +20,15 @@ Simple proxy server built on connect.
 
 2. Update the configuration file, e.g.:
 
-```json
+ ```json
 {
-    "port": 9000,
-    "verbose": true,
-    "routes": {
-        "/": "http://nodejs.org/",
-        "/someroute": "/somelocaldirectory/"
-    }
-}
+    	"port": 9000,
+    	"verbose": true,
+    	"routes": {
+	    	"/": "http://nodejs.org/",
+	        "/someroute": "/somelocaldirectory/"
+	    }
+	}
 ```
 
 3. Start proxit by running `proxit` on the command line.
@@ -57,7 +57,7 @@ grunt.loadNpmTasks('proxit');
 
 You can now start your dev configuration using `grunt proxit:dev`.
 
-## Configuration - Middleware
+## Configuration - Middleware (Connect / Express)
 
 ```js
 
