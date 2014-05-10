@@ -28,6 +28,9 @@
     "type": "git",
     "url": "https://github.com/cengage/proxit"
   },
+  "scripts": {
+    "test": "grunt"
+  },
   "licenses": [
     {
       "type": "Apache",
