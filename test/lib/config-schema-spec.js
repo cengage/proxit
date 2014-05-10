@@ -67,6 +67,24 @@ describe('config-schema', function() {
         });
     });
 
+    it('should allow an array of plugins to be initialized when proxit starts', function() {
+        valid({
+            plugins: ['someplugin']
+        });
+    });
+
+    it('should allow an empty array of plugins', function() {
+        valid({
+            plugins: []
+        });
+    });
+
+    it('should not allow plugins to be an object', function() {
+        invalid({
+            plugins: {}
+        });
+    });
+
     function valid(options) {
         expect(tv4.validate(options, schemaUrl)).to.eql(true);
     }
