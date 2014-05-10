@@ -32,7 +32,7 @@ describe('config', function() {
         exists = false;
     });
 
-    it('should return local config when nothing is passed', function() {
+    it('should return proxit.json present and nothing is passed', function() {
         givenProxitJson();
         whenConfigCalledWithNoParams();
         thenConfigShouldEqualProxitJson();
