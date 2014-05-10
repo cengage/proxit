@@ -20,7 +20,7 @@ describe('config', function() {
 
     beforeEach(function() {
         mockery.setup({
-            allow: [sut, 'lodash', 'path', 'minimist', 'tv4', './config-schema'],
+            allow: [sut, 'lodash', 'path', 'minimist', 'tv4', './schema/config'],
             mock: {
                 'fs': {
                     existsSync: function() {

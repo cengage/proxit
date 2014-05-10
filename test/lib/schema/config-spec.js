@@ -1,10 +1,6 @@
 var chai = require('chai'),
     expect = chai.expect,
-    schema = require('../../lib/config-schema'),
-    tv4 = require('tv4'),
-    schemaUrl = '/proxit/config';
-
-tv4.addSchema(schemaUrl, schema);
+    schemas = require('../../../lib/schemas');
 
 describe('config-schema', function() {
     it('should allow port', function() {
@@ -67,29 +63,27 @@ describe('config-schema', function() {
         });
     });
 
-    it('should allow an array of plugins to be initialized when proxit starts', function() {
+    it('should allow an object describing plugins to be initialized when proxit starts', function() {
         valid({
-            plugins: ['someplugin']
+            plugins: {
+                'someplugin': '0.0.0'
+            }
         });
     });
 
-    it('should allow an empty array of plugins', function() {
-        valid({
-            plugins: []
-        });
-    });
-
-    it('should not allow plugins to be an object', function() {
+    it('should fail if plugins do not have a valid semver range', function() {
         invalid({
-            plugins: {}
+            plugins: {
+                'someplugin': 'afasdffaa'
+            }
         });
     });
 
     function valid(options) {
-        expect(tv4.validate(options, schemaUrl)).to.eql(true);
+        expect(schemas.validate(options, '/config')).to.eql(true);
     }
 
     function invalid(options) {
-        expect(tv4.validate(options, schemaUrl)).to.eql(false);
+        expect(schemas.validate(options, '/config')).to.eql(false);
     }
 });
