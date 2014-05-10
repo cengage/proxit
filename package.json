@@ -20,7 +20,9 @@
     "grunt-contrib-jshint": "~0.9.2",
     "grunt-jsbeautifier": "^0.2.7",
     "grunt-mocha-test": "~0.10.0",
-    "grunt-contrib-watch": "~0.6.1"
+    "grunt-contrib-watch": "~0.6.1",
+    "mockery": "~1.4.0",
+    "chai-spies": "~0.5.1"
   },
   "repository": {
     "type": "git",
