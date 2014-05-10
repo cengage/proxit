@@ -7,14 +7,15 @@ var chai = require('chai'),
     path = require('path'),
     sut = '../../lib/config',
     _ = require('lodash'),
-    defaultConfig = JSON.parse(fs.readFileSync('.proxitrc'));
+    proxitJson = JSON.parse(fs.readFileSync('.proxitrc'));
 
 chai.use(spies);
 
 describe('config', function() {
     var config,
         exists,
-        result;
+        result,
+        options;
 
     beforeEach(function() {
         mockery.setup({
@@ -29,13 +30,23 @@ describe('config', function() {
             }
         });
 
+        options = {
+
+        };
+
         exists = false;
     });
 
     it('should return proxit.json present and nothing is passed', function() {
         givenProxitJson();
-        whenConfigCalledWithNoParams();
+        whenConfigCalledWithNoOptions();
         thenConfigShouldEqualProxitJson();
+    });
+
+    it('should return options passed when present', function() {
+        givenProxitJson();
+        whenConfigCalledWithOptions();
+        thenConfigShouldEqualOptions();
     });
 
     afterEach(function() {
@@ -43,17 +54,25 @@ describe('config', function() {
     });
 
     function givenProxitJson() {
-        mockery.registerMock(process.cwd() + path.sep + 'proxit.json', _.cloneDeep(defaultConfig));
+        mockery.registerMock(process.cwd() + path.sep + 'proxit.json', _.cloneDeep(proxitJson));
         exists = true;
     }
 
-    function whenConfigCalledWithNoParams() {
+    function whenConfigCalledWithNoOptions() {
         config = require(sut);
         result = _.omit(config());
     }
 
+    function whenConfigCalledWithOptions() {
+        config = require(sut);
+        result = _.omit(config(options));
+    }
+
     function thenConfigShouldEqualProxitJson() {
-        expect(result).to.eql(defaultConfig);
-        mockery.deregisterMock('../../proxit.json');
+        expect(result).to.eql(proxitJson);
+    }
+
+    function thenConfigShouldEqualOptions() {
+        expect(result).to.eql(options);
     }
 });
