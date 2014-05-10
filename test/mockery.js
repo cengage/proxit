@@ -3,7 +3,7 @@ var mockery = require('mockery'),
 
 module.exports = _.extend(mockery, {
     setup: function(options) {
-        options = options || {};
+        this.options = options || {};
 
         this.enable(options.enable);
 
@@ -14,6 +14,7 @@ module.exports = _.extend(mockery, {
         if (options.allow) {
             this.registerAllowables(options.allow);
         }
+
     },
     registerMocks: function(mocks) {
         for (var key in mocks) {
@@ -21,6 +22,7 @@ module.exports = _.extend(mockery, {
         }
     },
     teardown: function() {
+        this.deregisterAll();
         this.disable();
     }
 });
