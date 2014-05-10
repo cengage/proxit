@@ -15,11 +15,12 @@ describe('config', function() {
     var config,
         exists,
         result,
-        options;
+        options,
+        exception;
 
     beforeEach(function() {
         mockery.setup({
-            allow: [sut, 'lodash', 'path', 'minimist'],
+            allow: [sut, 'lodash', 'path', 'minimist', 'tv4', './config-schema'],
             mock: {
                 'fs': {
                     existsSync: function() {
@@ -31,13 +32,19 @@ describe('config', function() {
         });
 
         options = {
-
+            port: 8080,
+            verbose: true,
+            routes: {
+                '/': '/mysite'
+            }
         };
 
         exists = false;
+        exception = undefined;
+        result = undefined;
     });
 
-    it('should return proxit.json present and nothing is passed', function() {
+    it('should return proxit.json when present and nothing is passed', function() {
         givenProxitJson();
         whenConfigCalledWithNoOptions();
         thenConfigShouldEqualProxitJson();
@@ -49,6 +56,12 @@ describe('config', function() {
         thenConfigShouldEqualOptions();
     });
 
+    it('should throw exception on invalid options', function() {
+        givenInvalidOptions();
+        whenConfigCalledWithOptions();
+        thenInvalidOptionsExceptionShouldBeThrown();
+    });
+
     afterEach(function() {
         mockery.teardown();
     });
@@ -58,14 +71,26 @@ describe('config', function() {
         exists = true;
     }
 
+    function givenInvalidOptions() {
+        options.trash = true;
+    }
+
     function whenConfigCalledWithNoOptions() {
         config = require(sut);
-        result = _.omit(config());
+        try {
+            result = _.omit(config());
+        } catch (e) {
+            exception = e;
+        }
     }
 
     function whenConfigCalledWithOptions() {
         config = require(sut);
-        result = _.omit(config(options));
+        try {
+            result = _.omit(config(options));
+        } catch (e) {
+            exception = e;
+        }
     }
 
     function thenConfigShouldEqualProxitJson() {
@@ -74,5 +99,9 @@ describe('config', function() {
 
     function thenConfigShouldEqualOptions() {
         expect(result).to.eql(options);
+    }
+
+    function thenInvalidOptionsExceptionShouldBeThrown() {
+        expect(exception).to.equal('Configuration is invalid.');
     }
 });
