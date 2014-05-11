@@ -1,7 +1,14 @@
 {
+    "hosts": [{
+        "routes": {
+            "/": "http://espn.go.com/"
+        }
+    },{
+        "hostnames": ["localhost"],
+        "routes": {
+            "/": "http://nodejs.org/"
+        }
+    }],
     "port": 9000,
-    "verbose": true,
-    "routes": {
-        "/": "http://nodejs.org/"
-    }
+    "verbose": true
 }

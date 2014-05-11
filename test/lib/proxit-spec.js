@@ -12,13 +12,26 @@ describe('proxit', function() {
         expect(proxit.api).to.be.an('object');
     });
 
-    describe('API', function() {
-        it('should have an createHost function', function() {
-            expect(proxit.api.createHost).to.be.a('function');
+    describe('api', function() {
+        beforeEach(function() {
+            proxit({
+                routes: {
+                    '/': 'test'
+                }
+            });
         });
 
-        it('should have a deleteHost function', function() {
-            expect(proxit.api.deleteHost).to.be.a('function');
+        describe('host', function() {
+            it('should return undefined if no params passed', function() {
+                expect(proxit.api.host()).to.eql(undefined);
+            });
+        });
+
+        describe('hosts', function() {
+            it('should return the array of hosts', function() {
+                expect(proxit.api.hosts().length).to.eql(1);
+            });
         });
     });
+
 });

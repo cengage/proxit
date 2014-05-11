@@ -63,6 +63,35 @@ describe('/config schema', function() {
         });
     });
 
+    it('should allow an array of hostnames to intercept', function() {
+        valid({
+            hostnames: ['www.mycompany.com'],
+            routes: {
+                '/': '/somefolder'
+            }
+        });
+    });
+
+    it('should allow an array of hosts', function() {
+        valid({
+            hosts: [{
+                hostnames: ['www.mycompany.com'],
+                routes: {
+                    '/': '/somefolder'
+                }
+            }]
+        });
+    });
+
+    it('should not allow invalid hosts', function() {
+        invalid({
+            hosts: [{
+                hostnames: ['www.mycompany.com'],
+                routes: {}
+            }]
+        });
+    });
+
     it('should allow an object describing plugins to be initialized when proxit starts', function() {
         valid({
             plugins: {

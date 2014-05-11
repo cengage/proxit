@@ -33,6 +33,21 @@ describe('/host schema', function() {
         });
     });
 
+    it('should require a routes object', function() {
+        invalid({
+
+        });
+    });
+
+    it('should allow an array of hostnames to intercept', function() {
+        valid({
+            hostnames: ['www.mycompany.com'],
+            routes: {
+                '/': '/somefolder'
+            }
+        });
+    });
+
     function valid(options) {
         expect(schemas.validate(options, '/host')).to.eql(true);
     }

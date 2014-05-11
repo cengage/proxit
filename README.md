@@ -24,10 +24,17 @@ Simple proxy server built on express / connect.
 {
     	"port": 9000,
     	"verbose": true,
-    	"routes": {
-	    	"/": "http://nodejs.org/",
-	        "/someroute": "/somelocaldirectory/"
-	    }
+    	"hosts": [{
+    	    "hostnames": ["*"],
+            "routes": {
+                "/": "http://nodejs.org/"
+            }
+    	},{
+    	    "hostnames": ["local.mycompany.com"],
+    	    "routes": {
+    	        "/": "/code/local.mycompany.com/"
+    	    }
+    	}]
 	}
 ```
 
@@ -43,9 +50,11 @@ grunt.initConfig({
         dev: {
             options: {
                 verbose: true,
-                routes: {
-                    '/': 'http://nodejs.org/'
-                }
+                hosts: [{
+                    routes: {
+                        '/': 'http://nodejs.org/'
+                    }
+                }]
             }
         }
     }
@@ -64,10 +73,12 @@ You can now start your dev configuration using `grunt proxit:dev`.
 var proxit = require('proxit');
 
 var config = {
-   verbose: true,
-   routes: {
-       '/': 'http://nodejs.org/'
-   }
+    verbose: true,
+    hosts: [{
+        routes: {
+            '/': 'http://nodejs.org/'
+        }
+    }]
 };
 
 express.use(proxit(config));

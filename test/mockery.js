@@ -1,18 +1,22 @@
 var mockery = require('mockery'),
     _ = require('lodash');
 
+mockery.warnOnUnregistered(false);
+
 module.exports = _.extend(mockery, {
     setup: function(options) {
-        this.options = options || {};
+        options = options || {};
 
-        this.enable(options.enable);
+        this.enable();
 
         if (options.mock) {
             this.registerMocks(options.mock);
         }
 
         if (options.allow) {
-            this.registerAllowables(options.allow);
+            options.allow.forEach(function(allowable) {
+                mockery.registerAllowable(allowable, true);
+            });
         }
 
     },
