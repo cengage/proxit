@@ -2,7 +2,7 @@ var chai = require('chai'),
     expect = chai.expect,
     schemas = require('../../../lib/schemas');
 
-describe('config-schema', function() {
+describe('/config schema', function() {
     it('should allow port', function() {
         valid({
             port: 9000
