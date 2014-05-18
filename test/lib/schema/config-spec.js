@@ -19,12 +19,6 @@ describe('/config schema', function() {
         });
     });
 
-    it('should not allow junk properties', function() {
-        invalid({
-            turtle: 'a'
-        });
-    });
-
     it('should support verbose flag set to true', function() {
         valid({
             verbose: true
