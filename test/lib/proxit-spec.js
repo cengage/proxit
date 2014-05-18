@@ -4,6 +4,20 @@ var chai = require('chai'),
 
 describe('proxit', function() {
 
+    beforeEach(function() {
+        proxit({
+            routes: {
+                '/': 'test'
+            },
+            hosts: [{
+                hostnames: ['localhost'],
+                routes: {
+                    '/': 'lib'
+                }
+            }]
+        });
+    });
+
     it('should have a loadPlugins function', function() {
         expect(proxit.loadPlugins).to.be.a('function');
     });
@@ -13,23 +27,21 @@ describe('proxit', function() {
     });
 
     describe('api', function() {
-        beforeEach(function() {
-            proxit({
-                routes: {
-                    '/': 'test'
-                }
-            });
-        });
+        var api = proxit.api;
 
-        describe('host', function() {
-            it('should return undefined if no params passed', function() {
-                expect(proxit.api.host()).to.eql(undefined);
+        describe('api.hosts', function() {
+            it('should have an "all" function that returns an array of all hosts', function() {
+                expect(api.hosts.all().length).to.eql(2);
             });
-        });
 
-        describe('hosts', function() {
-            it('should return the array of hosts', function() {
-                expect(proxit.api.hosts().length).to.eql(1);
+            describe('byHostname', function() {
+                it('should properly return default host', function() {
+                    expect(api.hosts.byHostname('*').routes['/']).to.eql('test');
+                });
+
+                it('should properly return specific host', function() {
+                    expect(api.hosts.byHostname('localhost').routes['/']).to.eql('lib');
+                });
             });
         });
     });
