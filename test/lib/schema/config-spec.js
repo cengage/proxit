@@ -9,6 +9,10 @@ describe('/config schema', function() {
         });
     });
 
+    it('should tolerate an empty config', function() {
+        valid({});
+    });
+
     it('should not allow a non numeric port', function() {
         invalid({
             port: 'a'

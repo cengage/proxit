@@ -102,6 +102,6 @@ describe('config', function() {
     }
 
     function thenInvalidOptionsExceptionShouldBeThrown() {
-        expect(exception).to.equal('Configuration is invalid.');
+        expect(exception).to.equal('Invalid configuration: ' + JSON.stringify(options));
     }
 });
