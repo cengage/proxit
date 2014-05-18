@@ -1,3 +1,5 @@
 #!/usr/bin/env node
 
-require('./lib/server/server')();
+var server = require('./lib/server/server');
+
+server.start();
