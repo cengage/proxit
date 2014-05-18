@@ -1,6 +1,7 @@
-var chai = require('chai'),
+var chai = require('../chai'),
     expect = chai.expect,
-    proxit = require('../../lib/proxit');
+    proxit = require('../../lib/proxit'),
+    proxy = require('../../lib/middleware/proxy');
 
 describe('proxit', function() {
 
@@ -29,9 +30,11 @@ describe('proxit', function() {
     describe('api', function() {
         var api = proxit.api;
 
-        describe('api.hosts', function() {
-            it('should have an "all" function that returns an array of all hosts', function() {
-                expect(api.hosts.all().length).to.eql(2);
+        describe('hosts', function() {
+            describe('all', function() {
+                it('should return an array of all hosts', function() {
+                    expect(api.hosts.all().length).to.eql(2);
+                });
             });
 
             describe('byHostname', function() {
@@ -41,6 +44,21 @@ describe('proxit', function() {
 
                 it('should properly return specific host', function() {
                     expect(api.hosts.byHostname('localhost').routes['/']).to.eql('lib');
+                });
+            });
+        });
+
+        describe('proxy', function() {
+
+            it('should return the raw proxy middleware', function() {
+                expect(api.proxy).to.eql(proxy);
+            });
+
+            describe('addInterceptor', function() {
+                // TODO: perform actual proxy call
+                it('should invoke callback on proxy calls', function() {
+                    var spy = chai.spy();
+                    api.proxy.addInterceptor(spy);
                 });
             });
         });
