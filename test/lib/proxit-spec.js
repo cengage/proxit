@@ -19,10 +19,6 @@ describe('proxit', function() {
         });
     });
 
-    it('should have a loadPlugins function', function() {
-        expect(proxit.loadPlugins).to.be.a('function');
-    });
-
     it('should return an api that plugins can extend', function() {
         expect(proxit.api).to.be.an('object');
     });
