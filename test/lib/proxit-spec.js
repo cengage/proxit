@@ -32,16 +32,6 @@ describe('proxit', function() {
                     expect(api.hosts.all().length).to.eql(2);
                 });
             });
-
-            describe('byHostname', function() {
-                it('should properly return default host', function() {
-                    expect(api.hosts.byHostname('*').routes['/']).to.eql('test');
-                });
-
-                it('should properly return specific host', function() {
-                    expect(api.hosts.byHostname('localhost').routes['/']).to.eql('lib');
-                });
-            });
         });
 
         describe('proxy', function() {
