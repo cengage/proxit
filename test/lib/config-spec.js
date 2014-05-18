@@ -57,8 +57,7 @@ describe('config', function() {
         thenConfigShouldEqualOptions();
     });
 
-    // rc and command line adds junk (should revisit using rc)
-    xit('should throw exception on invalid options', function() {
+    it('should throw exception on invalid options', function() {
         givenInvalidOptions();
         whenConfigCalledWithOptions();
         thenInvalidOptionsExceptionShouldBeThrown();

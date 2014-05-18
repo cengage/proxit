@@ -13,6 +13,12 @@ describe('/config schema', function() {
         valid({});
     });
 
+    it('should not allow junk to be passed', function() {
+        invalid({
+            junk: true
+        });
+    });
+
     it('should not allow a non numeric port', function() {
         invalid({
             port: 'a'
@@ -87,22 +93,6 @@ describe('/config schema', function() {
                 hostnames: ['www.mycompany.com'],
                 routes: {}
             }]
-        });
-    });
-
-    it('should allow an object describing plugins to be initialized when proxit starts', function() {
-        valid({
-            plugins: {
-                'someplugin': '0.0.0'
-            }
-        });
-    });
-
-    it('should fail if plugins do not have a valid semver range', function() {
-        invalid({
-            plugins: {
-                'someplugin': 'afasdffaa'
-            }
         });
     });
 
