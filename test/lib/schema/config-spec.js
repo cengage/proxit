@@ -96,6 +96,12 @@ describe('/config schema', function() {
         });
     });
 
+    it('should allow maxSockets to be specified', function() {
+        valid({
+            maxSockets: 10000
+        });
+    });
+
     function valid(options) {
         expect(schemas.validate(options, '/config')).to.eql(true);
     }
