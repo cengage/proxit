@@ -9,6 +9,5 @@
             "/": "http://nodejs.org/"
         }
     }],
-    "port": 9000,
-    "verbose": true
+    "port": 9000
 }

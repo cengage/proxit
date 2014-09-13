@@ -9,7 +9,6 @@ describe('proxit', function() {
 
     beforeEach(function() {
         proxit({
-            maxSockets: 100,
             routes: {
                 '/': 'test'
             },
@@ -24,11 +23,6 @@ describe('proxit', function() {
 
     it('should return an api that plugins can extend', function() {
         expect(proxit.api).to.be.an('object');
-    });
-
-    it('should set maxSockets for http and https according to the configuration', function() {
-        expect(http.globalAgent.maxSockets).to.equal(100);
-        expect(https.globalAgent.maxSockets).to.equal(100);
     });
 
     describe('api', function() {

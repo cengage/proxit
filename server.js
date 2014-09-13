@@ -1,5 +1,13 @@
 #!/usr/bin/env node
 
-var server = require('./lib/server/server');
+var cluster = require('cluster'),
+    os = require('os'),
+    server = require('./lib/server/server');
 
-server.start();
+if(cluster.isMaster) {
+    for(var i = 0; i < os.cpus().length; i++) {
+        cluster.fork();
+    }
+} else {
+    server.start();
+}
