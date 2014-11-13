@@ -34,8 +34,6 @@ describe('Grunt task', function() {
         });
 
     });
-
-    afterEach(function() {});
 });
 
 function invokeProxitCallback() {
