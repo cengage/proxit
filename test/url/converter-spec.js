@@ -1,4 +1,5 @@
-var convert = require('../../lib/url/converter').convert,
+var convertObj = require('../../lib/url/converter'),
+    convert = convertObj.convert,
     expect = require('chai').expect,
     URL = require('url'),
     _ = require('lodash');
@@ -17,6 +18,38 @@ describe('converter', function() {
             hostname: 'www.nodejs.org',
             path: '/test.html?test=true',
             href: 'http://www.nodejs.org/test.html?test=true'
+        });
+    });
+
+    describe('syncSearchOnUrlObject', function() {
+        it('should sync path and href to the new search parameter', function() {
+            var urlObj = URL.parse('http://www.nodejs.org');
+            urlObj.search = '?node=fun';
+
+            convertObj.syncSearchOnUrlObject(urlObj);
+
+            expect(urlObj.path).to.eql('/?node=fun');
+            expect(urlObj.href).to.eql('http://www.nodejs.org/?node=fun');
+        });
+
+        it('should safely sync when url object had previous query', function() {
+            var urlObj = URL.parse('http://www.nodejs.org?one=one');
+            urlObj.search = '?one=one&two=two';
+
+            convertObj.syncSearchOnUrlObject(urlObj);
+
+            expect(urlObj.path).to.eql('/?one=one&two=two');
+            expect(urlObj.href).to.eql('http://www.nodejs.org/?one=one&two=two');
+        });
+
+        it('should keep any pathing in the url', function() {
+            var urlObj = URL.parse('http://www.nodejs.org/childpage');
+            urlObj.search = '?node=fun';
+
+            convertObj.syncSearchOnUrlObject(urlObj);
+
+            expect(urlObj.path).to.eql('/childpage?node=fun');
+            expect(urlObj.href).to.eql('http://www.nodejs.org/childpage?node=fun');
         });
     });
 
