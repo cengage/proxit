@@ -3,7 +3,8 @@ var chai = require('../chai'),
     http = require('http'),
     https = require('https'),
     proxit = require('../../lib/proxit'),
-    proxy = require('../../lib/middleware/proxy');
+    proxy = require('../../lib/middleware/proxy'),
+    converter = require('../../lib/url/converter');
 
 describe('proxit', function() {
 
@@ -40,6 +41,10 @@ describe('proxit', function() {
 
             it('should return the raw proxy middleware', function() {
                 expect(api.proxy).to.eql(proxy);
+            });
+
+            it('should return the raw converter module', function() {
+                expect(api.converter).to.eql(converter);
             });
 
             describe('addInterceptor', function() {
