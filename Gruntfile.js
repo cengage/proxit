@@ -16,6 +16,12 @@ module.exports = function(grunt) {
             },
             src: ['test/**/*-spec.js']
         },
+        mocha_istanbul: {
+            src: 'test',
+            options: {
+                mask: '**/*-spec.js',
+            }
+        },
         jsbeautifier: {
             src: '<%= jshint.files %>'
         },
@@ -36,4 +42,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-jsbeautifier');
 
     grunt.registerTask('default', ['jshint', 'mochaTest', 'jsbeautifier']);
+    grunt.registerTask('coverage',
+        "Run coverage.",
+        function() {
+            grunt.loadNpmTasks('grunt-mocha-istanbul');
+            grunt.task.run('mocha_istanbul');
+        }
+    );
 };
