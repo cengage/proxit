@@ -2,7 +2,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         jshint: {
-            files: ['gruntfile.js', 'lib/**/*.js', 'test/**/*.js'],
+            files: ['Gruntfile.js', 'lib/**/*.js', 'test/**/*.js'],
             options: {
                 globals: {
                     console: true,
@@ -15,6 +15,12 @@ module.exports = function(grunt) {
                 reporter: 'spec'
             },
             src: ['test/**/*-spec.js']
+        },
+        mocha_istanbul: {
+            src: 'test',
+            options: {
+                mask: '**/*-spec.js',
+            }
         },
         jsbeautifier: {
             src: '<%= jshint.files %>'
@@ -36,4 +42,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-jsbeautifier');
 
     grunt.registerTask('default', ['jshint', 'mochaTest', 'jsbeautifier']);
+    grunt.registerTask('coverage',
+        "Run coverage.",
+        function() {
+            grunt.loadNpmTasks('grunt-mocha-istanbul');
+            grunt.task.run('mocha_istanbul');
+        }
+    );
 };
