@@ -1,53 +1,53 @@
 {
-  "name": "proxit",
-  "description": "Simple proxy server built on express / connect.",
-  "version": "0.6.2",
-  "bin": "server.js",
-  "main": "lib/proxit",
-  "engines": {
-    "node": ">=0.8"
-  },
-  "dependencies": {
-    "express": "~4.12.2",
-    "chalk": "~1.0.0",
-    "rc": "~0.6.0",
-    "uuid": "~2.0.1",
-    "lodash": "~3.5.0",
-    "tv4": "~1.1.9",
-    "semver": "~4.3.1"
-  },
-  "devDependencies": {
-    "chai": "^2.1.1",
-    "chai-spies": "~0.5.1",
-    "grunt": "~0.4.4",
-    "grunt-contrib-jshint": "~0.11.0",
-    "grunt-contrib-watch": "~0.6.1",
-    "grunt-jsbeautifier": "^0.2.7",
-    "grunt-mocha-istanbul": "^2.3.1",
-    "grunt-mocha-test": "~0.12.7",
-    "mockery": "~1.4.0",
-    "request": "^2.37.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/cengage/proxit"
-  },
-  "scripts": {
-    "test": "grunt"
-  },
-  "licenses": [
-    {
-      "type": "Apache",
-      "url": "https://raw.github.com/cengage/proxit/master/LICENSE"
-    }
-  ],
-  "keywords": [
-    "gruntplugin",
-    "proxy",
-    "connect",
-    "express",
-    "http",
-    "grunt",
-    "router"
-  ]
+    "name": "proxit",
+    "description": "Simple proxy server built on express / connect.",
+    "version": "0.6.3",
+    "bin": "server.js",
+    "main": "lib/proxit",
+    "engines": {
+        "node": ">=0.8"
+    },
+    "dependencies": {
+        "chalk": "~1.0.0",
+        "express": "~4.12.2",
+        "lodash": "~3.5.0",
+        "rc": "~0.6.0",
+        "semver": "~4.3.1",
+        "tv4": "~1.1.9",
+        "uuid": "~2.0.1"
+    },
+    "devDependencies": {
+        "chai": "^2.1.1",
+        "chai-spies": "~0.5.1",
+        "grunt": "~0.4.4",
+        "grunt-contrib-jshint": "~0.11.0",
+        "grunt-contrib-watch": "~0.6.1",
+        "grunt-dev-update": "^1.1.0",
+        "grunt-jsbeautifier": "^0.2.7",
+        "grunt-mocha-istanbul": "^2.3.1",
+        "grunt-mocha-test": "~0.12.7",
+        "load-grunt-tasks": "^3.1.0",
+        "mockery": "~1.4.0",
+        "request": "^2.37.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cengage/proxit"
+    },
+    "scripts": {
+        "test": "grunt"
+    },
+    "licenses": [{
+        "type": "Apache",
+        "url": "https://raw.github.com/cengage/proxit/master/LICENSE"
+    }],
+    "keywords": [
+        "gruntplugin",
+        "proxy",
+        "connect",
+        "express",
+        "http",
+        "grunt",
+        "router"
+    ]
 }
